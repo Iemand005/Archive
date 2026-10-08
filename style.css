@@ -6,10 +6,9 @@ html, body {
 }
 
 article {
-	width: 100%;
 	display: flex;
 }
 
-section, iframe {
+wrticle, section, iframe {
 	width: 100%;
 }
