@@ -5,9 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hall of frames</title>
 	<link rel="stylesheet" href="style.css">
+	<script>
+		(() => {
+			const saved = localStorage.getItem('theme');
+			if (saved) document.documentElement.dataset.theme = saved;
+		})();
+	</script>
 </head>
 <body>
-	<header></header>
+	<header>
+		<button class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark mode</button>
+	</header>
 	<main>
 		<h1>Hall of frames!</h1>
 		<article>
@@ -23,6 +31,27 @@
 			</section>
 		</article>
 	</main>
-	<footer></footer>
+	<footer>Hall of frames</footer>
+	<script>
+		const btn = document.querySelector('.theme-toggle');
+		const root = document.documentElement;
+
+		const current = () =>
+			root.dataset.theme ||
+			(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+		const sync = () => {
+			btn.textContent = current() === 'dark' ? 'Light mode' : 'Dark mode';
+		};
+
+		btn.addEventListener('click', () => {
+			root.dataset.theme = current() === 'dark' ? 'light' : 'dark';
+			localStorage.setItem('theme', root.dataset.theme);
+			sync();
+		});
+
+		matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
+		sync();
+	</script>
 </body>
 </html>
