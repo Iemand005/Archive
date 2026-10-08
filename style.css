@@ -131,13 +131,17 @@ section:hover {
 	transform: translateY(-2px);
 }
 
+h2, p {
+	margin: 1rem;
+}
+
 section h2 {
-	margin: 0 0 0.25rem;
+	margin-bottom: 0.25rem;
 	font-size: 1.25rem;
 }
 
 section p {
-	margin: 0 0 1rem;
+	margin-bottom: 1rem;
 	color: var(--muted);
 	font-size: 0.95rem;
 }
