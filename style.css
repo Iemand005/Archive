@@ -8,3 +8,7 @@ html, body {
 article {
 	display: flex;
 }
+
+iframe {
+	width: 100%;
+}
